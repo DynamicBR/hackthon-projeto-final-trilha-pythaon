@@ -1,4 +1,4 @@
-from banco import db
+from models.banco import db
 
 class Produto(db.Model):
     id = db.Column(db.Integer, primary_key=True)
