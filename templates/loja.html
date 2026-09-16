@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Produtos</title>
+</head>
+<body class="container py-5 bg-light">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Selecione seus itens</h2>
+        <a href="{{ url_for('loja.caixa') }}" class="btn btn-success btn-lg">Ir ao Caixa (R$ {{ "%.2f"|format(total) }})</a>
+    </div>
+    <div class="row">
+        {% for p in produtos %}
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm p-3 text-center">
+                <h5 class="mb-2">{{ p.nome }}</h5>
+                <p class="text-muted fw-bold">R$ {{ "%.2f"|format(p.preco) }}</p>
+                <form method="POST" action="{{ url_for('loja.exibir_loja') }}">
+                    <input type="hidden" name="preco" value="{{ p.preco }}">
+                    <button type="submit" class="btn btn-primary w-100">Adicionar ao Carrinho</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
