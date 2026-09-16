@@ -1,0 +1,10 @@
+import sys
+import os
+
+# Aponta para a pasta exata do seu projeto
+path = '/home/DynamicBR/flask-project'
+if path not in sys.path:
+    sys.path.append(path)
+
+# Importa o 'app' de dentro do seu arquivo main.py
+from main import app as application
